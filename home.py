@@ -1,7 +1,7 @@
 import streamlit as st
 import secrets
 import string
-import pyperclip
+import importlib
 import math
 
 # ------------------ Password Logic ------------------ #
@@ -90,9 +90,11 @@ if st.button("Generate Password"):
         with col1:
             st.metric("Strength", f"{icon} {strength}")
         with col2:
-            if st.button("📋 Copy to Clipboard"):
-                pyperclip.copy(password)
-                st.success("Password copied!")
+            st.text_input(
+                "Copy password",
+                password,
+                label_visibility="collapsed"
+            )   
 
     else:
         st.error("Select at least one character type.")
